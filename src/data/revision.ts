@@ -1,0 +1,135 @@
+import type { RevisionNote } from '@/types';
+
+export const revisionNotes: RevisionNote[] = [
+  {
+    id: 'rev-2min-1', mode: '2min', subject: 'general', title: '2-Minute All-Subject Rapid Revision',
+    points: [
+      'Java: strongly typed, JVM-based, OOP with classes, objects, inheritance, polymorphism, encapsulation, abstraction.',
+      'Python: dynamically typed, indentation-based, lists/tuples/sets/dicts, def functions, class with __init__ and self.',
+      'DBMS: relational model, primary key (unique, not null), foreign key (references), normalization (1NF-3NF-BCNF), ACID.',
+      'OS: process vs thread, scheduling (FCFS, SJF, RR, Priority), deadlock 4 conditions, paging, virtual memory, semaphores.',
+      'DSA: arrays O(1) access, linked lists O(1) head insert, stack LIFO, queue FIFO, BST in-order = sorted, Big O.',
+      'Networks: OSI 7 layers, TCP/IP 4 layers, TCP reliable vs UDP fast, DNS port 53, HTTP 80, HTTPS 443, IP vs MAC.',
+    ],
+  },
+  {
+    id: 'rev-2min-2', mode: '2min', subject: 'java', title: 'Java 2-Minute Revision',
+    points: [
+      'final = constant; static = class-level; private = same class only.',
+      'String immutable; use .equals() not ==; StringBuilder for mutable.',
+      'extends = inheritance; implements = interface; super = parent; this = current.',
+      'Overloading = compile-time; overriding = runtime; final methods cannot be overridden.',
+      'try-catch-finally; checked exceptions caught at compile time; throw vs throws.',
+      'List allows duplicates; Set does not; Map is key-value; Vector/Hashtable synchronized.',
+      'JVM: ClassLoader, bytecode verifier, execution engine (interpreter + JIT + GC).',
+      'Generics: compile-time type safety; wildcards ? extends / ? super (PECS).',
+      'Streams are lazy; lambdas implement functional interfaces.',
+    ],
+  },
+  {
+    id: 'rev-2min-3', mode: '2min', subject: 'python', title: 'Python 2-Minute Revision',
+    points: [
+      'No type declarations; a = 5 binds a name to an object.',
+      'list [] mutable; tuple () immutable; set {} unique; dict {key: value}.',
+      'def defines functions; *args positional; **kwargs keyword; lambda anonymous.',
+      'self is first param of instance methods; __init__ is constructor; super() calls parent.',
+      'List comprehension: [x*x for x in range(n) if x % 2 == 0].',
+      'try-except-finally; raise throws; BaseException is root.',
+      'Decorators (@) wrap functions; generators (yield) are lazy; GIL limits CPU threads.',
+    ],
+  },
+  {
+    id: 'rev-2min-4', mode: '2min', subject: 'dbms', title: 'DBMS 2-Minute Revision',
+    points: [
+      'Primary key: unique + not null. Foreign key: references another primary key.',
+      '1NF atomic; 2NF no partial dependency; 3NF no transitive dependency; BCNF stronger 3NF.',
+      'CRUD = INSERT, SELECT, UPDATE, DELETE.',
+      'Joins: INNER (matches), LEFT (all left), RIGHT (all right), FULL (all both), CROSS (Cartesian).',
+      'ACID = Atomicity, Consistency, Isolation, Durability.',
+      'COMMIT saves; ROLLBACK undoes; indexes speed reads but slow writes.',
+      'Isolation levels: READ UNCOMMITTED < READ COMMITTED < REPEATABLE READ < SERIALIZABLE.',
+      'Three-schema: external, conceptual, internal; CAP: Consistency, Availability, Partition tolerance.',
+    ],
+  },
+  {
+    id: 'rev-2min-5', mode: '2min', subject: 'os', title: 'OS 2-Minute Revision',
+    points: [
+      'Process = program in execution with PCB; Thread = lightweight unit sharing memory.',
+      'Scheduling: FCFS, SJF (optimal wait), Round Robin (fair), Priority (aging avoids starvation).',
+      'Deadlock 4 conditions: mutual exclusion, hold and wait, no preemption, circular wait.',
+      'Paging: fixed pages/frames, page table, TLB; eliminates external fragmentation.',
+      'Virtual memory: demand paging, page faults, LRU/FIFO replacement, thrashing.',
+      'Synchronization: mutex, semaphores (wait/signal), critical sections, race conditions.',
+      'System calls trap user to kernel mode; dual mode protects OS; ASLR/NX defend against attacks.',
+      'Containers share the host kernel (lighter than VMs); Kubernetes orchestrates them.',
+    ],
+  },
+  {
+    id: 'rev-2min-6', mode: '2min', subject: 'dsa', title: 'DSA 2-Minute Revision',
+    points: [
+      'Array: O(1) access, O(n) insert/delete; Linked list: O(1) head insert, O(n) access.',
+      'Stack LIFO (push/pop); Queue FIFO (enqueue/dequeue).',
+      'BST: left < root < right; in-order traversal gives sorted order.',
+      'Linear search O(n); Binary search O(log n) on sorted arrays.',
+      'Bubble/Selection O(n^2); Insertion O(n) on nearly sorted; Merge/Heap O(n log n); Quick O(n log n) avg.',
+      'Big O: O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(2^n) < O(n!).',
+      'Hashing: O(1) average; collisions via chaining or open addressing; load factor n/m.',
+      'Graphs: BFS (queue) shortest unweighted; DFS (stack); Dijkstra shortest weighted; MST Kruskal/Prim.',
+      'DP: overlapping subproblems + optimal substructure; memoization (top-down) or tabulation (bottom-up).',
+    ],
+  },
+  {
+    id: 'rev-2min-7', mode: '2min', subject: 'cn', title: 'Networks 2-Minute Revision',
+    points: [
+      'OSI 7: Application, Presentation, Session, Transport, Network, Data Link, Physical.',
+      'TCP/IP 4: Application, Transport, Internet, Network Access.',
+      'TCP reliable (3-way handshake, ACKs); UDP fast (no guarantees).',
+      'DNS port 53; HTTP 80; HTTPS 443; FTP 21; SSH 22; SMTP 25.',
+      'IP = logical layer-3; MAC = physical layer-2; ARP maps IP to MAC.',
+      'Router = layer 3 (networks); Switch = layer 2 (frames); Hub = layer 1 (broadcast).',
+      'PDUs: Data, Segment, Packet, Frame, Bit. CIDR /n; usable hosts = 2^(host bits) - 2.',
+      'Security: symmetric (one key), asymmetric (key pair), hashes, signatures, TLS, firewalls.',
+    ],
+  },
+  {
+    id: 'rev-5min-1', mode: '5min', subject: 'general', title: '5-Minute Deep Revision (All Subjects)',
+    points: [
+      'JAVA OOP: class is a blueprint; object is an instance; constructor initializes; extends inherits; abstract/interface for abstraction; encapsulation via private+getters; polymorphism via overloading (compile) and overriding (runtime).',
+      'JAVA Collections: List (ArrayList, LinkedList) ordered duplicates; Set (HashSet, TreeSet) unique; Map (HashMap, TreeMap) key-value; Vector/Hashtable synchronized. JVM: ClassLoader, verifier, JIT, GC (generational). Generics (PECS), Streams (lazy), lambdas (functional interfaces).',
+      'PYTHON: dynamic typing; list [] / tuple () / set {} / dict {k:v}; def, *args, **kwargs, lambda; class with __init__, self, super(); list comprehensions; try-except-finally. Decorators (@), generators (yield), closures, GIL (use multiprocessing for CPU), asyncio.',
+      'DBMS: ER model (entity rectangle, attribute oval, relationship diamond); keys (primary, foreign, candidate, super); normalization (1NF atomic, 2NF no partial, 3NF no transitive, BCNF); SQL (DDL/DML/DCL/TCL); joins (inner, left, right, full, cross); ACID; indexes (B-tree, clustered/non-clustered). Three-schema architecture; isolation levels; concurrency (2PL, MVCC); recovery (undo/redo, checkpoints); NoSQL + CAP.',
+      'OS: process states + PCB; threads share heap; scheduling algorithms + metrics; deadlock conditions + prevention/avoidance (Banker) + detection; paging + TLB + multi-level; virtual memory + demand paging + replacement (FIFO, LRU, Optimal) + thrashing; synchronization (mutex, semaphore, monitor, classic problems). System calls + dual mode; disk scheduling; file systems (inodes, journaling); security (ASLR, NX, least privilege); virtualization + containers.',
+      'DSA: arrays vs linked lists; stack/queue + variants; trees (binary, BST, AVL, traversals); searching (linear, binary, hashing); sorting (bubble, selection, insertion, merge, quick, heap) with complexities; Big O/Omega/Theta. Graphs (BFS, DFS, Dijkstra, MST, topological sort); hashing (chaining, open addressing, load factor); recursion + DP (memoization, tabulation); greedy algorithms.',
+      'NETWORKS: OSI vs TCP/IP layers; HTTP/HTTPS; TCP vs UDP; DNS; IP (IPv4/IPv6, classes, private, NAT, CIDR, subnetting) vs MAC; routing (static/dynamic, RIP/OSPF/BGP) vs switching (store-and-forward, cut-through); hub vs switch vs router; protocols and ports. Encapsulation + PDUs; TCP lifecycle (3-way handshake, 4-way teardown); security (symmetric/asymmetric, hashes, signatures, TLS, firewalls); cloud (VPC), REST, load balancing, CDNs.',
+    ],
+  },
+  {
+    id: 'rev-5min-2', mode: '5min', subject: 'java', title: 'Java 5-Minute Deep Revision',
+    points: [
+      'Variables: local (method), instance (object), static (class). Data types: 8 primitives + String reference. Operators: %, &&, ?:, precedence. Loops: for/while/do-while, break/continue, enhanced for. Arrays: zero-indexed, length, O(1) access, O(n) insert.',
+      'Strings immutable; .equals vs ==; StringBuilder mutable; String pool; intern(). Classes/objects: new, this, Object root, toString. Constructors: no return, overloading, chaining (this/super). Inheritance: extends, single, super, final. Polymorphism: overloading (compile), overriding (runtime). Encapsulation: private + getters. Abstraction: abstract class, interface (Java 8 default/static).',
+      'Collections: List/Set/Map; ArrayList vs LinkedList; HashMap vs TreeMap; Vector/Hashtable synchronized. Exceptions: try-catch-finally, checked vs unchecked, throw/throws, multi-catch, try-with-resources. Packages: package/import, java.lang default. Access modifiers: private/default/protected/public.',
+      'JVM: ClassLoader, bytecode verifier, runtime data areas (method area, heap, stack, PC, native stack), execution engine (interpreter + JIT + GC). Generics: type parameters, wildcards (PECS), type erasure. Streams: lazy pipelines, intermediate vs terminal ops. Lambdas: functional interfaces. Multithreading: Thread/Runnable/Callable, synchronized, volatile, java.util.concurrent. Industry: Maven/Gradle, Spring, Hibernate, Jakarta EE.',
+    ],
+  },
+  {
+    id: 'rev-5min-3', mode: '5min', subject: 'python', title: 'Python 5-Minute Deep Revision',
+    points: [
+      'Variables: dynamic, references. Data types: int/float/bool/str/list/tuple/set/dict/None. Lists: mutable, append/pop/insert, slicing [start:stop:step]. Tuples: immutable, (1,). Sets: unique, | & -. Dict: key-value, get, keys/values/items, insertion order 3.7+.',
+      'Loops: for/while, break/continue/pass, else, range, enumerate, zip. Functions: def, *args, **kwargs, default args (evaluated once), lambda, return None default, nested functions. Strings: immutable, upper/lower/strip/split/replace, f-strings, startswith. Modules: import/from/as, math, re, os, sys, datetime, collections, itertools.',
+      'Exceptions: try-except-else-finally, raise, BaseException/Exception, common types (Value/Type/Key/Index/Name). OOP: class, __init__, self, super, inheritance, MRO, @classmethod/@staticmethod/@property, __del__, name mangling (__x). List comprehensions: [expr for x in iter if cond]; set/dict comprehensions.',
+      'Decorators: @, wrap functions, functools.wraps, parameterized. Generators: yield, lazy, generator expressions. Closures: capture enclosing scope, LEGB. GIL: one bytecode thread; use multiprocessing for CPU, asyncio for I/O. Industry: venv, pip, requirements.txt, PyPI, PEP 8, pytest, Django/Flask/FastAPI, NumPy/pandas/scikit-learn, type hints.',
+    ],
+  },
+  {
+    id: 'rev-10min-1', mode: '10min', subject: 'general', title: '10-Minute Full Exam Revision',
+    points: [
+      'JAVA: Variables (local/instance/static, final). Data types (8 primitives, String is reference). Operators (%, &&, ?:). Loops (for/while/do-while, break/continue). Arrays (zero-indexed, length, O(1) access). Strings (immutable, .equals, StringBuilder). Classes/Objects (new, this, Object root). Constructors (no return, overloading, chaining). Inheritance (extends, single, super, final). Polymorphism (overloading compile, overriding runtime). Encapsulation (private+getters). Abstraction (abstract, interface, Java 8 default). Collections (List/Set/Map, synchronized Vector/Hashtable). Exceptions (try-catch-finally, checked vs unchecked, throw/throws). Packages (package/import, java.lang default). Access modifiers (private/default/protected/public). JVM (ClassLoader, verifier, interpreter+JIT+GC, generational heap). Generics (type params, wildcards PECS, erasure). Streams (lazy, intermediate/terminal). Lambdas (functional interfaces). Multithreading (Thread/Runnable/Callable, synchronized, volatile, executors). Industry (Maven/Gradle, Spring, Hibernate).',
+      'PYTHON: Variables (dynamic, references). Data types (int/float/bool/str/list/tuple/set/dict/None). Lists (mutable, append/pop, slicing). Tuples (immutable, (1,)). Sets (unique, | & -). Dict (key-value, get, insertion order). Loops (for/while, break/continue, else, range). Functions (def, *args, **kwargs, lambda, default args). Strings (immutable, split/strip/replace, f-strings). Modules (import, from, as). Exceptions (try-except-finally-else, raise, BaseException). OOP (class, __init__, self, super, inheritance, MRO, classmethod/staticmethod/property, name mangling). List comprehensions ([expr for x in iter if cond], set/dict comps). Decorators (@, wraps, parameterized). Generators (yield, lazy). Closures (LEGB). GIL (multiprocessing for CPU, asyncio for I/O). Industry (venv, pip, PyPI, PEP 8, pytest, Django/Flask/FastAPI, NumPy/pandas).',
+      'DBMS: DBMS definition + advantages. ER model (entity/attribute/relationship, cardinality, weak entity). Keys (primary unique+not null, foreign references, candidate minimal, super any). Normalization (1NF atomic, 2NF no partial, 3NF no transitive, BCNF, 4NF multi-valued). SQL (DDL CREATE/ALTER/DROP, DML SELECT/INSERT/UPDATE/DELETE, DCL GRANT/REVOKE, TCL COMMIT/ROLLBACK). CRUD. Joins (inner, left, right, full, cross, self, natural). Transactions (COMMIT, ROLLBACK, SAVEPOINT). ACID (Atomicity, Consistency, Isolation, Durability). Indexes (B-tree, clustered/non-clustered, unique, bitmap). Anomalies (insert/update/delete). Views. NoSQL. Three-schema architecture + data independence. Isolation levels (READ UNCOMMITTED to SERIALIZABLE). Concurrency (2PL, shared/exclusive locks, MVCC, deadlocks). Recovery (log, undo/redo, checkpoints, ARIES). CAP theorem. ORMs + connection pools (industry).',
+      'OS: Process (PCB, states, fork/exec/wait, orphan/zombie/daemon). Thread (lightweight, share heap, user vs kernel, benefits). Scheduling (FCFS, SJF, RR, Priority, Multilevel; metrics; short/long/medium-term; preemptive vs non; aging; convoy). Deadlock (4 conditions, prevention, avoidance Banker, detection, ostrich). Paging (pages/frames, page table, TLB, multi-level, no external frag). Virtual memory (demand paging, page fault, replacement FIFO/LRU/Optimal, Belady anomaly, thrashing, working set, dirty bit). Semaphores (wait/signal, binary/counting, Dijkstra). Context switching (PCB, overhead, thread vs process). Memory management (first/best/worst fit, internal/external frag, compaction, swapping). Synchronization (critical section, race condition, mutex, monitor, producer-consumer, readers-writers, dining philosophers, Peterson, spinlock, livelock). System calls + dual mode. Disk scheduling (FCFS, SSTF, SCAN, C-SCAN, LOOK). File systems (allocation, inodes, hard/symbolic links, journaling). Security (authentication/authorization, least privilege, ASLR, NX, buffer overflow). Virtualization (hypervisors Type 1/2, containers, Docker, Kubernetes). Industry (Linux, shells, package managers, CI/CD, daemons).',
+      'DSA: Arrays (contiguous, O(1) access, O(n) insert, fixed, dynamic resize, 2D row-major). Linked lists (singly/doubly/circular, O(1) head insert, O(n) access, Floyd cycle). Stack (LIFO, push/pop/peek O(1), applications, overflow/underflow). Queue (FIFO, enqueue/dequeue, circular, deque, priority, BFS). Trees (binary, BST, full/complete, traversals in/pre/post/level, leaf/root, AVL, heap). Searching (linear O(n), binary O(log n) sorted, hash O(1), interpolation). Sorting (bubble, selection, insertion, merge, quick, heap; stable; in-place; complexities). Big O (O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(2^n) < O(n!); Omega lower; Theta tight). Graphs (BFS, DFS, Dijkstra, Kruskal/Prim MST, topological sort, cycle detection). Hashing (functions, chaining, open addressing, load factor). Recursion + DP (overlapping subproblems, optimal substructure, memoization, tabulation, Fibonacci/knapsack/LCS). Greedy (greedy-choice property, Dijkstra, Huffman, activity selection). Industry (LRU cache, B+ tree indexes, tries, stacks/queues, graphs).',
+      'NETWORKS: OSI 7 layers (Application, Presentation, Session, Transport, Network, Data Link, Physical) + PDUs. TCP/IP 4 layers + mapping. HTTP (stateless, port 80, methods, status codes). HTTPS (TLS, port 443, encryption/auth/integrity). TCP (connection-oriented, 3-way handshake, reliable, flow control, congestion control, 20-byte header, 4-way termination, states). UDP (connectionless, 8-byte header, fast, DNS/DHCP/TFTP/VoIP). DNS (name to IP, port 53 UDP, A/AAAA/MX/CNAME, recursive). IP address (IPv4 32-bit, IPv6 128-bit, classes, private ranges, loopback, NAT, CIDR, subnetting). MAC (48-bit, layer 2, OUI, ARP). Routing (layer 3, static/dynamic, RIP/OSPF/BGP, default route, routing table). Switching (layer 2, MAC learning, store-and-forward/cut-through, STP, VLANs). Hub (layer 1, broadcast, one collision domain). Router (layer 3, separate broadcast domains). Protocols (FTP, SMTP/POP/IMAP, DHCP, ICMP, SSH/Telnet) + ports. Encapsulation + PDUs. Security (symmetric/asymmetric, hashes, signatures, TLS, firewalls, NAT). Industry (VPC, REST, load balancing, CDNs, SNMP, CSP).',
+    ],
+  },
+];
