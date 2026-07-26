@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { useRouter } from '@/hooks/useRouter';
 import { Layout } from '@/components/Layout';
 import { HomePage } from '@/pages/HomePage';
@@ -32,7 +33,12 @@ function App() {
   else if (path === '/bookmarks') page = <BookmarksPage />;
   else page = <HomePage />;
 
-  return <Layout>{page}</Layout>;
+  return (
+    <>
+      <Layout>{page}</Layout>
+      <Analytics />
+    </>
+  );
 }
 
 export default App;
