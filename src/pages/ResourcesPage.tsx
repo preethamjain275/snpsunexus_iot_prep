@@ -7,8 +7,11 @@ export function ResourcesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="section-title flex items-center gap-2">
-          <Link2 size={26} /> External Resources
+        <h1 className="section-title flex items-center gap-3">
+          <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 text-white">
+            <Link2 size={22} className="icon-3d icon-3d-float" />
+          </div>
+          External Resources
         </h1>
         <p className="text-slate-500 mt-1">Direct links to trusted learning sites for deeper study.</p>
       </div>
@@ -25,13 +28,13 @@ export function ResourcesPage() {
                   href={r.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card p-5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                  className="card-3d p-5 group"
                 >
                   <div className="flex items-center justify-between">
                     <p className="font-semibold">{r.name}</p>
-                    <ExternalLink size={18} className="text-slate-400 group-hover:text-sky-500" />
+                    <ExternalLink size={18} className="text-slate-400 group-hover:text-sky-500 group-hover:scale-110 transition-all" />
                   </div>
-                  <p className="text-xs text-slate-400 mt-2 truncate">{r.url}</p>
+                  <p className="text-xs text-slate-400 mt-2 truncate font-mono">{r.url}</p>
                 </a>
               ))}
           </div>

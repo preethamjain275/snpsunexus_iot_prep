@@ -17,8 +17,11 @@ export function InterviewPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="section-title flex items-center gap-2">
-          <MessageCircleQuestion size={26} /> Interview Questions
+        <h1 className="section-title flex items-center gap-3">
+          <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white">
+            <MessageCircleQuestion size={22} className="icon-3d icon-3d-float" />
+          </div>
+          Interview Questions
         </h1>
         <p className="text-slate-500 mt-1">Most asked questions with short, exam-ready answers.</p>
       </div>

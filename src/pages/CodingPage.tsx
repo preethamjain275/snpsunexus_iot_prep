@@ -10,8 +10,11 @@ export function CodingPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="section-title flex items-center gap-2">
-          <Code2 size={26} /> Coding Practice
+        <h1 className="section-title flex items-center gap-3">
+          <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white">
+            <Code2 size={22} className="icon-3d icon-3d-float" />
+          </div>
+          Coding Practice
         </h1>
         <p className="text-slate-500 mt-1">{questions.length} questions with approach, dry run, Java & Python solutions, and time complexity.</p>
       </div>

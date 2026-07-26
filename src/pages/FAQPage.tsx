@@ -8,8 +8,11 @@ export function FAQPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="section-title flex items-center gap-2">
-          <HelpCircle size={26} /> Frequently Asked Questions
+        <h1 className="section-title flex items-center gap-3">
+          <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 text-white">
+            <HelpCircle size={22} className="icon-3d icon-3d-float" />
+          </div>
+          Frequently Asked Questions
         </h1>
         <p className="text-slate-500 mt-1">Everything you need to know about the diagnostic assessment.</p>
       </div>

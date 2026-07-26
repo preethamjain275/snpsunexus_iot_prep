@@ -25,12 +25,12 @@ export function HomePage() {
   return (
     <div className="space-y-10">
       {/* Hero */}
-      <section className="relative overflow-hidden card p-6 sm:p-10 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950 border-0 text-white">
+      <section className="relative overflow-hidden card-3d p-6 sm:p-10 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950 border-0 text-white shadow-2xl">
         <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-sky-500/20 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
         <div className="relative">
           <span className="chip bg-white/10 text-sky-200 border border-white/10 backdrop-blur">
-            <ShieldCheck size={14} /> B.E. 2028 Batch
+            <ShieldCheck size={14} className="icon-3d-pulse text-sky-400" /> B.E. 2028 Batch
           </span>
           <h1 className="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
             IOT Diagnostic Assessment<br className="hidden sm:block" /> Crash Prep
@@ -38,16 +38,16 @@ export function HomePage() {
           <p className="mt-3 text-lg text-sky-100/80 font-medium">
             Prepare for all 6 Diagnostic Assessments in just 2 days.
           </p>
-          <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur">
+          <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <p className="text-xs font-semibold text-sky-100">Built by Team SNPSU NEXUS</p>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
-            <button onClick={() => navigate('/subjects')} className="btn bg-sky-500 text-white hover:bg-sky-400 shadow-lg shadow-sky-500/30">
-              Start Preparation <ArrowRight size={18} />
+            <button onClick={() => navigate('/subjects')} className="btn-primary">
+              Start Preparation <ArrowRight size={18} className="icon-3d-spin-hover" />
             </button>
             <button onClick={() => navigate('/last-minute')} className="btn bg-white/10 text-white border border-white/20 hover:bg-white/20">
-              <Zap size={18} /> Last Minute Mode
+              <Zap size={18} className="text-amber-400 icon-3d-pulse" /> Last Minute Mode
             </button>
           </div>
         </div>
@@ -57,30 +57,32 @@ export function HomePage() {
       <section>
         <h2 className="section-title mb-4">Assessment Pattern</h2>
         <div className="grid sm:grid-cols-3 gap-4">
-          <div className="card p-5">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 mb-3">
-              <Clock size={22} />
+          <div className="card-3d p-5 group">
+            <div className="icon-3d-box h-12 w-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 text-white mb-4">
+              <Clock size={24} className="icon-3d icon-3d-float" />
             </div>
-            <p className="text-3xl font-bold">2 Hours</p>
-            <p className="text-sm text-slate-500 mt-1">Total duration</p>
+            <p className="text-3xl font-extrabold tracking-tight">2 Hours</p>
+            <p className="text-sm text-slate-500 font-medium mt-1">Total duration</p>
           </div>
-          <div className="card p-5">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400 mb-3">
-              <ListChecks size={22} />
+          <div className="card-3d p-5 group">
+            <div className="icon-3d-box h-12 w-12 rounded-2xl bg-gradient-to-tr from-violet-500 to-purple-600 text-white mb-4">
+              <ListChecks size={24} className="icon-3d icon-3d-pulse" />
             </div>
-            <p className="text-3xl font-bold">50 MCQs</p>
-            <p className="text-sm text-slate-500 mt-1">Multiple choice questions</p>
+            <p className="text-3xl font-extrabold tracking-tight">50 MCQs</p>
+            <p className="text-sm text-slate-500 font-medium mt-1">Multiple choice questions</p>
           </div>
-          <div className="card p-5">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-pink-100 dark:bg-pink-950/50 text-pink-600 dark:text-pink-400 mb-3">
-              <Code2 size={22} />
+          <div className="card-3d p-5 group">
+            <div className="icon-3d-box h-12 w-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white mb-4">
+              <Code2 size={24} className="icon-3d icon-3d-float" />
             </div>
-            <p className="text-3xl font-bold">2 Coding</p>
-            <p className="text-sm text-slate-500 mt-1">Programming questions</p>
+            <p className="text-3xl font-extrabold tracking-tight">2 Coding</p>
+            <p className="text-sm text-slate-500 font-medium mt-1">Programming questions</p>
           </div>
         </div>
-        <div className="card p-5 mt-4 flex items-center gap-3 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 border-emerald-200 dark:border-emerald-900">
-          <TrendingUp className="text-emerald-600 dark:text-emerald-400 shrink-0" size={22} />
+        <div className="card-3d p-5 mt-4 flex items-center gap-3 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 border-emerald-200 dark:border-emerald-900/60 shadow-sm">
+          <div className="icon-3d-box h-10 w-10 shrink-0 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white">
+            <TrendingUp size={20} className="icon-3d icon-3d-pulse" />
+          </div>
           <p className="text-sm font-medium text-emerald-900 dark:text-emerald-200">
             Difficulty: Easy to Medium. You only need to know the fundamentals. This is NOT a placement interview.
           </p>
@@ -90,12 +92,15 @@ export function HomePage() {
       {/* Companies */}
       <section>
         <h2 className="section-title mb-4 flex items-center gap-2">
-          <Building2 size={24} /> Companies
+          <div className="icon-3d-box h-8 w-8 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400">
+            <Building2 size={18} className="icon-3d icon-3d-pulse" />
+          </div>
+          Companies
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {companies.map((c) => (
-            <div key={c} className="card p-4 text-center">
-              <p className="font-semibold text-sm">{c}</p>
+            <div key={c} className="card-3d p-4 text-center group cursor-pointer hover:border-sky-300 dark:hover:border-sky-700">
+              <p className="font-semibold text-sm group-hover:scale-105 transition-transform">{c}</p>
             </div>
           ))}
         </div>
@@ -111,14 +116,14 @@ export function HomePage() {
               <button
                 key={q.path}
                 onClick={() => navigate(q.path)}
-                className="card p-5 text-left hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                className="card-3d p-5 text-left group"
               >
-                <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${q.color} text-white mb-3`}>
-                  <Icon size={22} />
+                <div className={`icon-3d-box h-12 w-12 rounded-2xl bg-gradient-to-br ${q.color} text-white mb-3`}>
+                  <Icon size={24} className="icon-3d group-hover:scale-110" />
                 </div>
-                <p className="font-semibold">{q.label}</p>
-                <p className="text-xs text-slate-500 mt-0.5">{q.desc}</p>
-                <ArrowRight size={16} className="mt-3 text-slate-400 group-hover:text-sky-500 group-hover:translate-x-1 transition-all" />
+                <p className="font-bold text-base">{q.label}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">{q.desc}</p>
+                <ArrowRight size={16} className="mt-3 text-slate-400 group-hover:text-sky-500 group-hover:translate-x-1.5 transition-all" />
               </button>
             );
           })}
@@ -135,16 +140,16 @@ export function HomePage() {
               <button
                 key={s.id}
                 onClick={() => navigate(`/subject/${s.id}`)}
-                className="card p-5 text-left hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                className="card-3d p-5 text-left group"
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${s.color} text-white`}>
-                    <Icon size={20} />
+                <div className="flex items-center gap-3.5 mb-3">
+                  <div className={`icon-3d-box h-11 w-11 shrink-0 rounded-2xl bg-gradient-to-br ${s.color} text-white`}>
+                    <Icon size={22} className="icon-3d group-hover:scale-110" />
                   </div>
-                  <p className="font-semibold">{s.name}</p>
+                  <p className="font-bold text-base leading-snug">{s.name}</p>
                 </div>
-                <p className="text-sm text-slate-500">{s.description}</p>
-                <p className="text-xs text-slate-400 mt-2">{s.topics.length} topics · {allMCQs.filter((m) => m.subject === s.id).length} MCQs</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">{s.description}</p>
+                <p className="text-xs font-semibold text-sky-600 dark:text-sky-400 mt-3">{s.topics.length} topics · {allMCQs.filter((m) => m.subject === s.id).length} MCQs</p>
               </button>
             );
           })}
@@ -152,23 +157,23 @@ export function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="card p-6 bg-gradient-to-br from-sky-600 to-blue-700 text-white border-0">
+      <section className="card-3d p-8 bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700 text-white border-0 shadow-2xl">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-          <div>
-            <p className="text-3xl font-extrabold">{totalMCQs}+</p>
-            <p className="text-sm text-sky-100">MCQs with explanations</p>
+          <div className="group">
+            <p className="text-4xl font-extrabold tracking-tight group-hover:scale-110 transition-transform">{totalMCQs}+</p>
+            <p className="text-xs font-semibold text-sky-100 uppercase tracking-wider mt-1">MCQs with explanations</p>
           </div>
-          <div>
-            <p className="text-3xl font-extrabold">{totalCoding}+</p>
-            <p className="text-sm text-sky-100">Coding questions</p>
+          <div className="group">
+            <p className="text-4xl font-extrabold tracking-tight group-hover:scale-110 transition-transform">{totalCoding}+</p>
+            <p className="text-xs font-semibold text-sky-100 uppercase tracking-wider mt-1">Coding questions</p>
           </div>
-          <div>
-            <p className="text-3xl font-extrabold">6</p>
-            <p className="text-sm text-sky-100">Mock tests</p>
+          <div className="group">
+            <p className="text-4xl font-extrabold tracking-tight group-hover:scale-110 transition-transform">6</p>
+            <p className="text-xs font-semibold text-sky-100 uppercase tracking-wider mt-1">Mock tests</p>
           </div>
-          <div>
-            <p className="text-3xl font-extrabold">100%</p>
-            <p className="text-sm text-sky-100">Free · No login</p>
+          <div className="group">
+            <p className="text-4xl font-extrabold tracking-tight group-hover:scale-110 transition-transform">100%</p>
+            <p className="text-xs font-semibold text-sky-100 uppercase tracking-wider mt-1">Free · No login</p>
           </div>
         </div>
       </section>

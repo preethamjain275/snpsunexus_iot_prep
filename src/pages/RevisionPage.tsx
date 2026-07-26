@@ -30,13 +30,16 @@ export function RevisionPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div>
-          <h1 className="section-title flex items-center gap-2">
-            <StickyNote size={26} /> Revision Notes
+          <h1 className="section-title flex items-center gap-3">
+            <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 text-white">
+              <StickyNote size={22} className="icon-3d icon-3d-float" />
+            </div>
+            Revision Notes
           </h1>
           <p className="text-slate-500 mt-1">Only the important concepts. Pick a time budget and revise.</p>
         </div>
         <button onClick={downloadPDF} className="btn-outline">
-          <Download size={16} /> Download Notes
+          <Download size={16} className="icon-3d-pulse" /> Download Notes
         </button>
       </div>
 
@@ -45,13 +48,15 @@ export function RevisionPage() {
           <button
             key={m.id}
             onClick={() => setMode(m.id)}
-            className={`card p-4 text-center transition-all ${
-              mode === m.id ? 'ring-2 ring-sky-500 bg-sky-50 dark:bg-sky-950/30' : ''
+            className={`card-3d p-4 text-center group ${
+              mode === m.id ? 'ring-2 ring-sky-500 bg-sky-50 dark:bg-sky-950/40' : ''
             }`}
           >
-            <Clock size={20} className="mx-auto mb-1 text-sky-600 dark:text-sky-400" />
-            <p className="font-bold">{m.label}</p>
-            <p className="text-xs text-slate-500">{m.desc}</p>
+            <div className="icon-3d-box h-9 w-9 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 mx-auto mb-2">
+              <Clock size={18} className="icon-3d icon-3d-float" />
+            </div>
+            <p className="font-bold text-sm">{m.label}</p>
+            <p className="text-xs text-slate-500 font-medium">{m.desc}</p>
           </button>
         ))}
       </div>

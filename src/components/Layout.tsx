@@ -29,14 +29,14 @@ export function Layout({ children }: Props) {
           <div className="flex h-16 items-center justify-between gap-3">
             <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 shrink-0"
+              className="flex items-center gap-2.5 shrink-0 group"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-600 text-white">
-                <GraduationCap size={20} />
+              <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-sky-600 to-blue-500 text-white shadow-lg shadow-sky-500/30">
+                <GraduationCap size={22} className="icon-3d icon-3d-float" />
               </div>
               <div className="hidden sm:block text-left">
-                <p className="text-sm font-bold leading-tight">IOT Crash Prep</p>
-                <p className="text-[11px] text-slate-500 leading-tight">Built by Team SNPSU NEXUS</p>
+                <p className="text-sm font-extrabold leading-tight tracking-tight bg-gradient-to-r from-sky-700 to-blue-600 dark:from-sky-400 dark:to-blue-400 bg-clip-text text-transparent">IOT Crash Prep</p>
+                <p className="text-[11px] text-slate-500 font-medium leading-tight">Built by Team SNPSU NEXUS</p>
               </div>
             </button>
 
@@ -45,10 +45,10 @@ export function Layout({ children }: Props) {
                 <button
                   key={item.path}
                   onClick={() => navigate(item.path)}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive(item.path)
-                      ? 'bg-sky-50 text-sky-700 dark:bg-sky-950/50 dark:text-sky-300'
-                      : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      ? 'bg-sky-50 text-sky-700 dark:bg-sky-950/50 dark:text-sky-300 shadow-sm border border-sky-200/60 dark:border-sky-800/60'
+                      : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100/80 dark:hover:bg-slate-800/80'
                   }`}
                 >
                   {item.label}
@@ -60,16 +60,21 @@ export function Layout({ children }: Props) {
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search"
-                className="p-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-sky-50 dark:hover:bg-slate-800 transition-all hover:scale-105"
               >
-                <Search size={20} />
+                <Search size={20} className="icon-3d-glow" />
               </button>
               <button
                 onClick={toggle}
                 aria-label="Toggle theme"
-                className="p-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                className="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 transition-all hover:scale-110 active:rotate-45"
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                {theme === 'dark' ? (
+                  <Sun size={20} className="text-amber-400 icon-3d-pulse" />
+                ) : (
+                  <Moon size={20} className="text-indigo-600 icon-3d-pulse" />
+                )}
               </button>
               <button
                 onClick={() => setMenuOpen(true)}

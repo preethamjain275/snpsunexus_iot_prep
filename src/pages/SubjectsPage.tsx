@@ -19,16 +19,16 @@ export function SubjectsPage() {
             <button
               key={s.id}
               onClick={() => navigate(`/subject/${s.id}`)}
-              className="card p-6 text-left hover:shadow-md hover:-translate-y-0.5 transition-all group"
+              className="card-3d p-6 text-left group"
             >
-              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${s.color} text-white mb-4`}>
-                <Icon size={24} />
+              <div className={`icon-3d-box h-12 w-12 rounded-2xl bg-gradient-to-br ${s.color} text-white mb-4`}>
+                <Icon size={24} className="icon-3d group-hover:scale-110" />
               </div>
               <p className="font-bold text-lg">{s.name}</p>
-              <p className="text-sm text-slate-500 mt-1">{s.description}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{s.description}</p>
               <div className="flex items-center justify-between mt-4">
-                <p className="text-xs text-slate-400">{s.topics.length} topics · {count} MCQs</p>
-                <ArrowRight size={18} className="text-slate-400 group-hover:text-sky-500 group-hover:translate-x-1 transition-all" />
+                <p className="text-xs font-semibold text-sky-600 dark:text-sky-400">{s.topics.length} topics · {count} MCQs</p>
+                <ArrowRight size={18} className="text-slate-400 group-hover:text-sky-500 group-hover:translate-x-1.5 transition-all" />
               </div>
             </button>
           );

@@ -17,8 +17,11 @@ export function RandomMCQPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="section-title flex items-center gap-2">
-          <Shuffle size={26} /> Random MCQ Generator
+        <h1 className="section-title flex items-center gap-3">
+          <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-violet-500 to-purple-600 text-white">
+            <Shuffle size={22} className="icon-3d icon-3d-float" />
+          </div>
+          Random MCQ Generator
         </h1>
         <p className="text-slate-500 mt-1">Generate a random set of MCQs from all subjects. Unlimited practice.</p>
       </div>
@@ -28,12 +31,12 @@ export function RandomMCQPage() {
           <button
             key={n}
             onClick={() => generate(n)}
-            className={`card p-6 text-center transition-all hover:-translate-y-0.5 hover:shadow-md ${
-              count === n ? 'ring-2 ring-sky-500' : ''
+            className={`card-3d p-6 text-center group ${
+              count === n ? 'ring-2 ring-sky-500 bg-sky-50 dark:bg-sky-950/40' : ''
             }`}
           >
-            <p className="text-3xl font-extrabold text-sky-600">{n}</p>
-            <p className="text-sm text-slate-500 mt-1">MCQs</p>
+            <p className="text-3xl font-extrabold text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform">{n}</p>
+            <p className="text-sm font-semibold text-slate-500 mt-1">MCQs</p>
           </button>
         ))}
       </div>

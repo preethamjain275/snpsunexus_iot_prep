@@ -61,8 +61,11 @@ export function LastMinutePage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="section-title flex items-center gap-2">
-          <Zap size={26} /> Last Minute Preparation
+        <h1 className="section-title flex items-center gap-3">
+          <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-red-500 to-orange-600 text-white">
+            <Zap size={22} className="icon-3d icon-3d-pulse" />
+          </div>
+          Last Minute Preparation
         </h1>
         <p className="text-slate-500 mt-1">Short on time? Pick a mode and maximize your score.</p>
       </div>
@@ -72,14 +75,14 @@ export function LastMinutePage() {
         {modes.map((m) => {
           const Icon = m.icon;
           return (
-            <div key={m.title} className="card p-6">
-              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${m.color} text-white mb-4`}>
-                <Icon size={24} />
+            <div key={m.title} className="card-3d p-6 group">
+              <div className={`icon-3d-box h-12 w-12 rounded-2xl bg-gradient-to-br ${m.color} text-white mb-4`}>
+                <Icon size={24} className="icon-3d group-hover:scale-110" />
               </div>
               <p className="font-bold text-lg">{m.title}</p>
-              <p className="text-sm text-slate-500 mt-1 mb-4">{m.desc}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 mb-4">{m.desc}</p>
               <button onClick={m.action} className="btn-primary w-full">
-                {m.actionLabel} <ChevronRight size={16} />
+                {m.actionLabel} <ChevronRight size={16} className="icon-3d-spin-hover" />
               </button>
             </div>
           );

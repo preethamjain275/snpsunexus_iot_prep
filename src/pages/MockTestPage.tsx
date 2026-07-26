@@ -162,8 +162,11 @@ export function MockTestPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="section-title flex items-center gap-2">
-          <ClipboardCheck size={26} /> Mock Tests
+        <h1 className="section-title flex items-center gap-3">
+          <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white">
+            <ClipboardCheck size={22} className="icon-3d icon-3d-pulse" />
+          </div>
+          Mock Tests
         </h1>
         <p className="text-slate-500 mt-1">Up to 50 randomized questions per test. Unlimited retakes — new questions each time, with instant results and explanations.</p>
       </div>
@@ -174,15 +177,15 @@ export function MockTestPage() {
             <button
               key={s.id}
               onClick={() => start(s.id)}
-              className="card p-6 text-left hover:shadow-md hover:-translate-y-0.5 transition-all group"
+              className="card-3d p-6 text-left group"
             >
-              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${s.color} text-white mb-4`}>
-                <ClipboardCheck size={24} />
+              <div className={`icon-3d-box h-12 w-12 rounded-2xl bg-gradient-to-br ${s.color} text-white mb-4`}>
+                <ClipboardCheck size={24} className="icon-3d group-hover:scale-110" />
               </div>
               <p className="font-bold text-lg">{s.name}</p>
-              <p className="text-sm text-slate-500 mt-1">{count} questions · Easy-Medium · Unlimited retakes</p>
-              <div className="flex items-center gap-2 mt-4 text-sm text-slate-400">
-                <Clock size={14} /> No time limit · <Shuffle size={14} /> Randomized
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{count} questions · Easy-Medium · Unlimited retakes</p>
+              <div className="flex items-center gap-2 mt-4 text-xs font-medium text-slate-400">
+                <Clock size={14} className="text-sky-500" /> No time limit · <Shuffle size={14} className="text-violet-500" /> Randomized
               </div>
             </button>
           );

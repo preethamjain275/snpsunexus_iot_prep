@@ -13,8 +13,11 @@ export function BookmarksPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div>
-          <h1 className="section-title flex items-center gap-2">
-            <Bookmark size={26} /> Bookmarks
+          <h1 className="section-title flex items-center gap-3">
+            <div className="icon-3d-box h-10 w-10 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 text-white">
+              <Bookmark size={22} className="icon-3d icon-3d-float" />
+            </div>
+            Bookmarks
           </h1>
           <p className="text-slate-500 mt-1">{bookmarked.length} saved questions across all subjects.</p>
         </div>
