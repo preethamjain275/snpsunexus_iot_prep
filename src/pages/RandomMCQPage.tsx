@@ -4,7 +4,7 @@ import { randomMCQs } from '@/data/mcq';
 import { MCQCard } from '@/components/MCQCard';
 
 export function RandomMCQPage() {
-  const [count, setCount] = useState<number | null>(null);
+  const [count, setCount] = useState<number | null>(20);
   const [seed, setSeed] = useState(0);
 
   const mcqs = count ? randomMCQs(count) : [];

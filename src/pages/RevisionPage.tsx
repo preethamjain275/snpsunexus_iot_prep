@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StickyNote, Download, Clock } from 'lucide-react';
 import { revisionNotes } from '@/data/revision';
+import { getTopicComplexity } from '@/utils/complexity';
 
 export function RevisionPage() {
   const [mode, setMode] = useState<'2min' | '5min' | '10min'>('2min');
@@ -36,7 +37,7 @@ export function RevisionPage() {
             </div>
             Revision Notes
           </h1>
-          <p className="text-slate-500 mt-1">Only the important concepts. Pick a time budget and revise.</p>
+          <p className="text-slate-500 mt-1">Only the important concepts with time & space complexity analysis.</p>
         </div>
         <button onClick={downloadPDF} className="btn-outline">
           <Download size={16} className="icon-3d-pulse" /> Download Notes
@@ -62,19 +63,33 @@ export function RevisionPage() {
       </div>
 
       <div className="space-y-4">
-        {notes.map((note) => (
-          <div key={note.id} className="card p-5">
-            <p className="font-bold text-lg mb-3">{note.title}</p>
-            <ul className="space-y-2.5">
-              {note.points.map((p, i) => (
-                <li key={i} className="text-sm flex gap-2 leading-relaxed">
-                  <span className="text-sky-500 shrink-0 font-bold">•</span>
-                  <span className="text-slate-600 dark:text-slate-300">{p}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {notes.map((note) => {
+          const comp = getTopicComplexity({ name: note.title }, note.subject);
+          return (
+            <div key={note.id} className="card p-5 space-y-3">
+              <p className="font-bold text-lg">{note.title}</p>
+              <ul className="space-y-2.5">
+                {note.points.map((p, i) => (
+                  <li key={i} className="text-sm flex gap-2 leading-relaxed">
+                    <span className="text-sky-500 shrink-0 font-bold">•</span>
+                    <span className="text-slate-600 dark:text-slate-300">{p}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Complexity Analysis Bar */}
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-3 text-xs">
+                <span className="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1">
+                  <Clock size={13} /> Time Complexity: <code className="font-mono bg-sky-100 dark:bg-sky-950 px-1.5 py-0.5 rounded text-sky-800 dark:text-sky-200">{comp.worstCase}</code>
+                </span>
+                <span className="font-bold text-purple-700 dark:text-purple-300 flex items-center gap-1">
+                  💾 Space Complexity: <code className="font-mono bg-purple-100 dark:bg-purple-950 px-1.5 py-0.5 rounded text-purple-800 dark:text-purple-200">{comp.spaceComplexity}</code>
+                </span>
+                <span className="text-slate-500 italic">({comp.explanation})</span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
