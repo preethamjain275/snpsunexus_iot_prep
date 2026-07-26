@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Bookmark, Check, X, Lightbulb } from 'lucide-react';
+import { Bookmark, Check, X, Lightbulb, Clock } from 'lucide-react';
 import type { MCQ } from '@/types';
 import { useBookmarks, useProgress } from '@/hooks/useLocalStorage';
 import { navigate } from '@/hooks/useRouter';
+import { getTopicComplexity } from '@/utils/complexity';
 
 interface Props {
   mcq: MCQ;
@@ -127,9 +128,27 @@ export function MCQCard({ mcq, index, showSubject }: Props) {
       </div>
 
       {revealed && (
-        <div className="mt-4 flex items-start gap-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900 p-3 animate-fade-in">
-          <Lightbulb size={18} className="shrink-0 mt-0.5 text-sky-600 dark:text-sky-400" />
-          <p className="text-sm text-sky-900 dark:text-sky-200">{mcq.explanation}</p>
+        <div className="mt-4 space-y-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900 p-3.5 animate-fade-in">
+          <div className="flex items-start gap-2">
+            <Lightbulb size={18} className="shrink-0 mt-0.5 text-sky-600 dark:text-sky-400" />
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-sky-950 dark:text-sky-100">Explanation & Answer</p>
+              <p className="text-sm text-sky-900 dark:text-sky-200 leading-relaxed">{mcq.explanation}</p>
+            </div>
+          </div>
+          {(() => {
+            const comp = getTopicComplexity({ name: mcq.topic }, mcq.subject);
+            return (
+              <div className="pt-2 border-t border-sky-200/60 dark:border-sky-900/60 flex flex-wrap items-center gap-3 text-xs">
+                <span className="font-semibold text-sky-800 dark:text-sky-200 flex items-center gap-1">
+                  <Clock size={13} /> Time: <code className="font-mono bg-sky-100 dark:bg-sky-900/60 px-1.5 py-0.5 rounded">{comp.worstCase}</code>
+                </span>
+                <span className="font-semibold text-sky-800 dark:text-sky-200 flex items-center gap-1">
+                  💾 Space: <code className="font-mono bg-sky-100 dark:bg-sky-900/60 px-1.5 py-0.5 rounded">{comp.spaceComplexity}</code>
+                </span>
+              </div>
+            );
+          })()}
         </div>
       )}
     </div>

@@ -1,9 +1,71 @@
 import type { TopicContent } from '@/types';
 
+export const complexityTopics: TopicContent[] = [
+  {
+    name: 'Time Complexity',
+    definition: 'Time Complexity is a theoretical measure of the amount of time an algorithm takes to execute as a function of the length of the input (n).',
+    explanation: 'Time complexity quantifies algorithmic efficiency by counting fundamental operations executed. It is expressed using Asymptotic Notations: Big O (O) for upper bound/worst case, Big Omega (Ω) for lower bound/best case, and Big Theta (Θ) for tight average case. Common time complexities include O(1) Constant, O(log n) Logarithmic, O(n) Linear, O(n log n) Linearithmic, O(n²) Quadratic, and O(2ⁿ) Exponential.',
+    shortAnswer: 'Time Complexity measures how execution time increases as input size n grows, expressed using Big O notation.',
+    importantPoints: [
+      'Measures operational growth rate relative to input size n.',
+      'Big O (O) represents worst-case upper bound execution time.',
+      'Big Omega (Ω) represents best-case lower bound execution time.',
+      'Big Theta (Θ) represents tight average-case execution time.',
+      'Complexity growth hierarchy: O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ) < O(n!).',
+    ],
+    easyExample: '// O(1) Constant Time\nint getFirst(int[] arr) {\n  return arr[0];\n}\n\n// O(n) Linear Time\nfor(int i = 0; i < n; i++) {\n  System.out.println(arr[i]);\n}',
+    mediumExample: '// O(n^2) Quadratic Time\nfor(int i = 0; i < n; i++) {\n  for(int j = 0; j < n; j++) {\n    // Executed n * n times\n  }\n}\n\n// O(log n) Logarithmic Time\nwhile(n > 1) { n /= 2; }',
+    faqs: [
+      { q: 'Why is Big O notation used for Time Complexity?', a: 'It provides a machine-independent way to analyze hardware-agnostic algorithm performance as input scales.' },
+      { q: 'What is the difference between Best Case and Worst Case?', a: 'Best case is the minimum operations required for ideal inputs, whereas worst case guarantees execution time upper limit for any input.' },
+    ],
+    interviewQuestions: [
+      { q: 'What is the difference between O(n) and O(log n)?', a: 'O(n) grows linearly with input size n, while O(log n) grows algorithmically slower by halving input search space each step (e.g., Binary Search).' },
+      { q: 'How do you calculate Time Complexity for nested loops?', a: 'Multiply the iteration counts of each loop level. If outer runs n times and inner runs n times, total complexity is O(n * n) = O(n²).' },
+    ],
+    timeComplexity: 'O(1) – O(2ⁿ)',
+    bestCase: 'O(1)',
+    avgCase: 'O(n log n)',
+    worstCase: 'O(n²)',
+    spaceComplexity: 'O(1)',
+    complexityExplanation: 'Time Complexity quantifies operation count scaling relative to input size n.',
+  },
+  {
+    name: 'Space Complexity',
+    definition: 'Space Complexity is the total amount of memory space required by an algorithm to execute to completion, including input space and auxiliary space.',
+    explanation: 'Space Complexity consists of two parts: Fixed Part (instruction space, simple variables, constants) and Variable Part (dynamically allocated memory, pointers, and call stack space for recursion). Auxiliary Space refers specifically to the extra space or temporary space used by the algorithm. Optimizing space complexity is critical in resource-constrained environments such as IoT devices and embedded microcontrollers.',
+    shortAnswer: 'Space Complexity represents total memory consumed during execution (Auxiliary Space + Input Space).',
+    importantPoints: [
+      'Total Space = Auxiliary Space + Input Space.',
+      'Auxiliary Space is extra temporary space used by algorithm excluding input.',
+      'Primitive variables and fixed pointers take O(1) auxiliary space.',
+      'Arrays or data structures of size n take O(n) space.',
+      'Recursive calls consume O(h) call stack memory where h is recursion tree height.',
+    ],
+    easyExample: '// O(1) Auxiliary Space\nint sum(int a, int b) {\n  int result = a + b;\n  return result;\n}',
+    mediumExample: '// O(n) Auxiliary Space for array allocation\nint[] copyArray(int[] orig, int n) {\n  int[] copy = new int[n]; // allocates n space\n  for(int i=0; i<n; i++) copy[i] = orig[i];\n  return copy;\n}\n\n// O(n) Call Stack Space for recursion\nint factorial(int n) {\n  if(n <= 1) return 1;\n  return n * factorial(n - 1); // n recursive frames\n}',
+    faqs: [
+      { q: 'What is Auxiliary Space vs Space Complexity?', a: 'Auxiliary Space is temporary space allocated during execution, while Space Complexity includes both auxiliary space and input space.' },
+      { q: 'How does recursion impact Space Complexity?', a: 'Each recursive function call adds a frame to the execution call stack, consuming O(depth) space.' },
+    ],
+    interviewQuestions: [
+      { q: 'Why is In-Place sorting preferred for low-memory devices?', a: 'In-Place sorting algorithms (like Quick Sort or Heap Sort) require only O(1) or O(log n) auxiliary space without copying array elements.' },
+      { q: 'What is the space complexity of a Hash Table?', a: 'O(n) auxiliary space to store n key-value entries in buckets.' },
+    ],
+    timeComplexity: 'O(1)',
+    bestCase: 'O(1)',
+    avgCase: 'O(1)',
+    worstCase: 'O(n)',
+    spaceComplexity: 'O(1) – O(n)',
+    complexityExplanation: 'Space Complexity measures memory growth across call stacks and dynamic buffer allocations.',
+  },
+];
+
 // Additional deep, industry-relevant theory topics per subject.
 // These are merged into each subject's topic list in SubjectPage.
 export const extraTheory: Record<string, TopicContent[]> = {
   java: [
+    ...complexityTopics,
     {
       name: 'JVM Architecture',
       definition: 'The JVM is a virtual machine that executes Java bytecode, providing platform independence.',
@@ -138,6 +200,7 @@ export const extraTheory: Record<string, TopicContent[]> = {
     },
   ],
   python: [
+    ...complexityTopics,
     {
       name: 'Decorators',
       definition: 'A decorator is a function that takes another function and extends its behavior without modifying it.',
@@ -250,6 +313,7 @@ export const extraTheory: Record<string, TopicContent[]> = {
     },
   ],
   dbms: [
+    ...complexityTopics,
     {
       name: 'Three-Schema Architecture',
       definition: 'The three-schema architecture separates database views into external, conceptual, and internal levels.',
@@ -384,6 +448,7 @@ export const extraTheory: Record<string, TopicContent[]> = {
     },
   ],
   os: [
+    ...complexityTopics,
     {
       name: 'System Calls & Dual Mode',
       definition: 'System calls are the interface from user programs to kernel services; dual mode protects the OS.',
@@ -518,6 +583,7 @@ export const extraTheory: Record<string, TopicContent[]> = {
     },
   ],
   dsa: [
+    ...complexityTopics,
     {
       name: 'Graphs',
       definition: 'A graph is a non-linear structure of vertices (nodes) connected by edges.',
@@ -630,6 +696,7 @@ export const extraTheory: Record<string, TopicContent[]> = {
     },
   ],
   cn: [
+    ...complexityTopics,
     {
       name: 'Encapsulation & PDUs',
       definition: 'Encapsulation wraps data with headers at each layer; the resulting unit is a PDU (Protocol Data Unit).',

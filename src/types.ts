@@ -37,6 +37,12 @@ export interface TopicContent {
   mediumExample: string;
   faqs: { q: string; a: string }[];
   interviewQuestions: { q: string; a: string }[];
+  timeComplexity?: string;
+  bestCase?: string;
+  avgCase?: string;
+  worstCase?: string;
+  spaceComplexity?: string;
+  complexityExplanation?: string;
 }
 
 export interface CodingQuestion {
@@ -49,8 +55,14 @@ export interface CodingQuestion {
   java: string;
   python: string;
   timeComplexity: string;
+  bestCase?: string;
+  avgCase?: string;
+  worstCase?: string;
+  spaceComplexity?: string;
   explanation: string;
   difficulty: 'easy' | 'medium';
+}
+
 }
 
 export interface RevisionNote {

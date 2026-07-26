@@ -81,14 +81,28 @@ export function CodingPage() {
                   </pre>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <span className="chip bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300">
-                    <Clock size={12} /> {q.timeComplexity}
-                  </span>
+                {/* Time Complexity Section */}
+                <div>
+                  <p className="text-xs font-bold uppercase text-sky-600 dark:text-sky-400 mb-1">Time Complexity</p>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 space-y-1 bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <p className="text-xs font-mono">
+                      <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Best Case:</span> {q.bestCase ?? q.timeComplexity ?? 'O(1)'} &nbsp;·&nbsp; 
+                      <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Average Case:</span> {q.avgCase ?? q.timeComplexity ?? 'O(n)'} &nbsp;·&nbsp; 
+                      <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Worst Case:</span> {q.worstCase ?? q.timeComplexity ?? 'O(n)'}
+                    </p>
+                    {q.explanation && <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{q.explanation}</p>}
+                  </div>
                 </div>
-                <div className="flex items-start gap-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900 p-3">
-                  <Lightbulb size={16} className="shrink-0 mt-0.5 text-sky-600 dark:text-sky-400" />
-                  <p className="text-sm text-sky-900 dark:text-sky-200">{q.explanation}</p>
+
+                {/* Space Complexity Section */}
+                <div>
+                  <p className="text-xs font-bold uppercase text-sky-600 dark:text-sky-400 mb-1">Space Complexity</p>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 space-y-1 bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <p className="text-xs font-mono">
+                      <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Auxiliary Space:</span> {q.spaceComplexity ?? 'O(1)'}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Auxiliary space represents the extra memory used by the algorithm beyond input array storage.</p>
+                  </div>
                 </div>
               </div>
             )}

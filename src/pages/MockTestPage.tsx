@@ -3,6 +3,7 @@ import { ClipboardCheck, ArrowLeft, Clock, CheckCircle2, XCircle, RotateCcw, Awa
 import { subjects } from '@/data/subjects';
 import { mcqsBySubject } from '@/data/mcq';
 import { navigate } from '@/hooks/useRouter';
+import { getTopicComplexity } from '@/utils/complexity';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -147,8 +148,22 @@ export function MockTestPage() {
                   })}
                 </div>
                 {submitted && (
-                  <div className="mt-3 flex items-start gap-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900 p-3">
+                  <div className="mt-3 space-y-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900 p-3.5">
+                    <p className="text-sm font-semibold text-sky-950 dark:text-sky-100">Explanation</p>
                     <p className="text-sm text-sky-900 dark:text-sky-200">{m.explanation}</p>
+                    {(() => {
+                      const comp = getTopicComplexity({ name: m.topic }, m.subject);
+                      return (
+                        <div className="pt-2 border-t border-sky-200/60 dark:border-sky-900/60 flex flex-wrap items-center gap-3 text-xs">
+                          <span className="font-semibold text-sky-800 dark:text-sky-200 flex items-center gap-1">
+                            <Clock size={13} /> Time: <code className="font-mono bg-sky-100 dark:bg-sky-900/60 px-1.5 py-0.5 rounded">{comp.worstCase}</code>
+                          </span>
+                          <span className="font-semibold text-sky-800 dark:text-sky-200 flex items-center gap-1">
+                            💾 Space: <code className="font-mono bg-sky-100 dark:bg-sky-900/60 px-1.5 py-0.5 rounded">{comp.spaceComplexity}</code>
+                          </span>
+                        </div>
+                      );
+                    })()}
                   </div>
                 )}
               </div>

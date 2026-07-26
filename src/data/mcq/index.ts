@@ -27,15 +27,27 @@ export const allMCQs: MCQ[] = [
   ...cnMCQs2,
 ];
 
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(k) where k is the number of matching MCQs (worst O(n))
+ */
 export function mcqsBySubject(subject: string): MCQ[] {
   return allMCQs.filter((m) => m.subject === subject);
 }
 
+/**
+ * Time Complexity: O(n log n) (array copy + sort)
+ * Space Complexity: O(n) for the shuffled copy
+ */
 export function randomMCQs(count: number): MCQ[] {
   const shuffled = [...allMCQs].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.min(count, allMCQs.length));
 }
 
+/**
+ * Time Complexity: O(n * L) where L is average length of searchable text fields
+ * Space Complexity: O(r) where r is the number of results (worst O(n))
+ */
 export function searchMCQs(query: string): MCQ[] {
   const q = query.toLowerCase().trim();
   if (!q) return [];
