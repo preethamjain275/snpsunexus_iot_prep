@@ -17,7 +17,7 @@ export function getTopicComplexity(
     complexityExplanation?: string;
   },
   subjectId?: string
-): ComplexityInfo {
+): ComplexityInfo | null {
   if (topic.bestCase && topic.worstCase && topic.spaceComplexity) {
     return {
       bestCase: topic.bestCase,
@@ -25,6 +25,16 @@ export function getTopicComplexity(
       worstCase: topic.worstCase,
       spaceComplexity: topic.spaceComplexity,
       explanation: topic.complexityExplanation ?? 'Algorithmic complexity derived from operations.',
+    };
+  }
+
+  if (topic.timeComplexity || topic.worstCase || topic.spaceComplexity) {
+    return {
+      bestCase: topic.bestCase ?? 'O(1)',
+      avgCase: topic.avgCase ?? topic.timeComplexity ?? 'O(n)',
+      worstCase: topic.worstCase ?? topic.timeComplexity ?? 'O(n)',
+      spaceComplexity: topic.spaceComplexity ?? 'O(1)',
+      explanation: topic.complexityExplanation ?? 'Complexity based on problem properties.',
     };
   }
 
@@ -40,7 +50,7 @@ export function getTopicComplexity(
       explanation: 'Divides search space in half each step. Requires sorted array.',
     };
   }
-  if (name.includes('search') || name.includes('linear search')) {
+  if (name.includes('linear search')) {
     return {
       bestCase: 'O(1)',
       avgCase: 'O(n)',
@@ -96,7 +106,7 @@ export function getTopicComplexity(
       explanation: 'Partitions array around pivot. Worst case occurs with bad pivot selection.',
     };
   }
-  if (name.includes('sort')) {
+  if (name.includes('sort algorithm') || name.includes('sorting')) {
     return {
       bestCase: 'O(n log n)',
       avgCase: 'O(n log n)',
@@ -106,8 +116,8 @@ export function getTopicComplexity(
     };
   }
 
-  // Data Structures
-  if (name.includes('array') || name.includes('vector')) {
+  // Data Structures Operations
+  if (name.includes('array traversal') || name.includes('array lookup')) {
     return {
       bestCase: 'O(1) access',
       avgCase: 'O(1) access / O(n) search',
@@ -116,7 +126,7 @@ export function getTopicComplexity(
       explanation: 'Contiguous memory block allowing O(1) indexed lookup.',
     };
   }
-  if (name.includes('linked list')) {
+  if (name.includes('linked list traversal') || name.includes('linked list search')) {
     return {
       bestCase: 'O(1) insert at head',
       avgCase: 'O(n) search/access',
@@ -125,7 +135,7 @@ export function getTopicComplexity(
       explanation: 'Nodes linked via pointers. Dynamic sizing with no contiguous memory requirement.',
     };
   }
-  if (name.includes('stack')) {
+  if (name.includes('stack operation') || name.includes('push/pop')) {
     return {
       bestCase: 'O(1) push/pop/peek',
       avgCase: 'O(1) push/pop/peek',
@@ -134,7 +144,7 @@ export function getTopicComplexity(
       explanation: 'LIFO structure providing O(1) top operations.',
     };
   }
-  if (name.includes('queue')) {
+  if (name.includes('queue operation') || name.includes('enqueue/dequeue')) {
     return {
       bestCase: 'O(1) enqueue/dequeue',
       avgCase: 'O(1) enqueue/dequeue',
@@ -143,7 +153,7 @@ export function getTopicComplexity(
       explanation: 'FIFO structure providing O(1) front/rear operations.',
     };
   }
-  if (name.includes('hash') || name.includes('map') || name.includes('dictionary') || name.includes('set')) {
+  if (name.includes('hash table') || name.includes('hash map')) {
     return {
       bestCase: 'O(1) lookup/insert',
       avgCase: 'O(1) lookup/insert',
@@ -152,7 +162,7 @@ export function getTopicComplexity(
       explanation: 'Uses hash functions to achieve average constant time operations.',
     };
   }
-  if (name.includes('tree') || name.includes('bst') || name.includes('binary tree')) {
+  if (name.includes('binary tree') || name.includes('bst traversal') || name.includes('tree traversal')) {
     return {
       bestCase: 'O(1) root access',
       avgCase: 'O(log n) search/insert',
@@ -161,7 +171,7 @@ export function getTopicComplexity(
       explanation: 'Hierarchical node structure with operations bounded by tree height h.',
     };
   }
-  if (name.includes('graph') || name.includes('bfs') || name.includes('dfs')) {
+  if (name.includes('graph traversal') || name.includes('bfs') || name.includes('dfs')) {
     return {
       bestCase: 'O(1)',
       avgCase: 'O(V + E)',
@@ -170,7 +180,7 @@ export function getTopicComplexity(
       explanation: 'Traverses V vertices and E edges in graph adjacency representation.',
     };
   }
-  if (name.includes('dynamic programming') || name.includes('dp') || name.includes('memoization')) {
+  if (name.includes('dynamic programming') || name.includes('memoization')) {
     return {
       bestCase: 'O(n) or O(n*w)',
       avgCase: 'O(subproblems * transition)',
@@ -179,80 +189,17 @@ export function getTopicComplexity(
       explanation: 'Breaks problem into overlapping subproblems and caches intermediate results.',
     };
   }
-  if (name.includes('recursion') || name.includes('backtracking')) {
+
+  if (name.includes('b+ tree index') || name.includes('database index')) {
     return {
-      bestCase: 'O(1) base case',
-      avgCase: 'O(2^n) or O(n!)',
-      worstCase: 'O(2^n) exponential',
-      spaceComplexity: 'O(n) call stack',
-      explanation: 'Function invokes itself until reaching base case, building execution stack frame.',
-    };
-  }
-  if (name.includes('loop')) {
-    return {
-      bestCase: 'O(1) early exit',
-      avgCase: 'O(n) per loop dimension',
-      worstCase: 'O(n^k) nested loops',
-      spaceComplexity: 'O(1) auxiliary variables',
-      explanation: 'Iterates n times over sequence or range.',
+      bestCase: 'O(1)',
+      avgCase: 'O(log n)',
+      worstCase: 'O(log n)',
+      spaceComplexity: 'O(n) index tree size',
+      explanation: 'B+ Tree index speeds up row selection from O(n) table scan to O(log n).',
     };
   }
 
-  // OS / DBMS / Networks / General Operations
-  if (subjectId === 'dbms' || name.includes('index') || name.includes('sql') || name.includes('join') || name.includes('transaction')) {
-    if (name.includes('index')) {
-      return {
-        bestCase: 'O(1)',
-        avgCase: 'O(log n)',
-        worstCase: 'O(log n)',
-        spaceComplexity: 'O(n) index tree size',
-        explanation: 'B+ Tree index speeds up row selection from O(n) table scan to O(log n).',
-      };
-    }
-    if (name.includes('join')) {
-      return {
-        bestCase: 'O(M + N) (hash join)',
-        avgCase: 'O(M + N) / O(M * N)',
-        worstCase: 'O(M * N) (nested loop join)',
-        spaceComplexity: 'O(M) build table space',
-        explanation: 'Combines two tables based on matching keys.',
-      };
-    }
-    return {
-      bestCase: 'O(1) cached lookup',
-      avgCase: 'O(log n) index / O(n) table scan',
-      worstCase: 'O(n) full scan',
-      spaceComplexity: 'O(1) buffer pool frame',
-      explanation: 'Database query execution complexity depends on index availability and join algorithm.',
-    };
-  }
-
-  if (subjectId === 'os' || name.includes('process') || name.includes('thread') || name.includes('scheduling') || name.includes('memory')) {
-    return {
-      bestCase: 'O(1) hit / switch',
-      avgCase: 'O(1) context switch / O(log n) scheduler',
-      worstCase: 'O(n) page fault / queue search',
-      spaceComplexity: 'O(1) PCB overhead / O(frames) page table',
-      explanation: 'Operating system kernel context switching and memory allocation complexity.',
-    };
-  }
-
-  if (subjectId === 'cn' || name.includes('tcp') || name.includes('ip') || name.includes('routing') || name.includes('dns')) {
-    return {
-      bestCase: 'O(1) RTT cached',
-      avgCase: 'O(log V) routing lookup / O(RTT)',
-      worstCase: 'O(V*E) route convergence',
-      spaceComplexity: 'O(V) routing table / O(W) buffer window',
-      explanation: 'Network packet propagation latency and routing table lookup bounds.',
-    };
-  }
-
-  // Default Fallback
-  return {
-    bestCase: 'O(1)',
-    avgCase: 'O(n)',
-    worstCase: 'O(n)',
-    spaceComplexity: 'O(1) auxiliary space',
-    explanation: 'Algorithmic performance scales linearly with input size n.',
-  };
+  // Non-algorithmic / theoretical concept
+  return null;
 }

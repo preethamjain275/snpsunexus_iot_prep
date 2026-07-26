@@ -138,6 +138,7 @@ export function MCQCard({ mcq, index, showSubject }: Props) {
           </div>
           {(() => {
             const comp = getTopicComplexity({ name: mcq.topic }, mcq.subject);
+            if (!comp) return null;
             return (
               <div className="pt-2 border-t border-sky-200/60 dark:border-sky-900/60 flex flex-wrap items-center gap-3 text-xs">
                 <span className="font-semibold text-sky-800 dark:text-sky-200 flex items-center gap-1">

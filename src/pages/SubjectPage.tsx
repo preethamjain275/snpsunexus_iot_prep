@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import * as Icons from 'lucide-react';
-import { ArrowLeft, BookText, ListChecks, StickyNote, MessageCircleQuestion, Clock, Lightbulb, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowLeft, BookText, ListChecks, StickyNote, MessageCircleQuestion, Clock, Lightbulb, ChevronDown, ChevronUp, Shuffle } from 'lucide-react';
 import { subjects } from '@/data/subjects';
 import { extraTheory } from '@/data/theory-extra';
 import { mcqsBySubject } from '@/data/mcq';
@@ -16,6 +16,7 @@ export function SubjectPage({ subjectId }: Props) {
   const subject = subjects.find((s) => s.id === subjectId);
   const [tab, setTab] = useState<'theory' | 'mcqs' | 'notes' | 'interview'>('theory');
   const [openTopic, setOpenTopic] = useState<number | null>(0);
+  const [seed, setSeed] = useState(0);
 
   if (!subject) {
     return (
@@ -27,7 +28,7 @@ export function SubjectPage({ subjectId }: Props) {
   }
 
   const Icon = (Icons as unknown as Record<string, typeof Icons.BookOpen>)[subject.icon] || Icons.BookOpen;
-  const mcqs = mcqsBySubject(subject.id);
+  const mcqs = useMemo(() => mcqsBySubject(subject.id), [subject.id, seed]);
   const topics = [...subject.topics, ...(extraTheory[subject.id] || [])];
 
   const tabs = [
@@ -121,29 +122,32 @@ export function SubjectPage({ subjectId }: Props) {
                       </ul>
                     </div>
 
-                    {/* Time Complexity Section */}
-                    <div>
-                      <p className="text-xs font-bold uppercase text-sky-600 dark:text-sky-400 mb-1">Time Complexity</p>
-                      <div className="text-sm text-slate-600 dark:text-slate-300 space-y-1 bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
-                        <p className="text-xs font-mono">
-                          <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Best Case:</span> {comp.bestCase} &nbsp;·&nbsp; 
-                          <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Average Case:</span> {comp.avgCase} &nbsp;·&nbsp; 
-                          <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Worst Case:</span> {comp.worstCase}
-                        </p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{comp.explanation}</p>
-                      </div>
-                    </div>
+                    {/* Time & Space Complexity Section */}
+                    {comp && (
+                      <>
+                        <div>
+                          <p className="text-xs font-bold uppercase text-sky-600 dark:text-sky-400 mb-1">Time Complexity</p>
+                          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-1 bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+                            <p className="text-xs font-mono">
+                              <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Best Case:</span> {comp.bestCase} &nbsp;·&nbsp; 
+                              <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Average Case:</span> {comp.avgCase} &nbsp;·&nbsp; 
+                              <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Worst Case:</span> {comp.worstCase}
+                            </p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{comp.explanation}</p>
+                          </div>
+                        </div>
 
-                    {/* Space Complexity Section */}
-                    <div>
-                      <p className="text-xs font-bold uppercase text-sky-600 dark:text-sky-400 mb-1">Space Complexity</p>
-                      <div className="text-sm text-slate-600 dark:text-slate-300 space-y-1 bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
-                        <p className="text-xs font-mono">
-                          <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Auxiliary Space:</span> {comp.spaceComplexity}
-                        </p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Space complexity accounts for the total memory consumed by variables, allocated structures, and recursion call stack frames.</p>
-                      </div>
-                    </div>
+                        <div>
+                          <p className="text-xs font-bold uppercase text-sky-600 dark:text-sky-400 mb-1">Space Complexity</p>
+                          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-1 bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+                            <p className="text-xs font-mono">
+                              <span className="font-sans font-semibold text-slate-800 dark:text-slate-200">Auxiliary Space:</span> {comp.spaceComplexity}
+                            </p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Space complexity accounts for the total memory consumed by variables, allocated structures, and recursion call stack frames.</p>
+                          </div>
+                        </div>
+                      </>
+                    )}
 
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
@@ -188,8 +192,19 @@ export function SubjectPage({ subjectId }: Props) {
       {/* MCQs tab */}
       {tab === 'mcqs' && (
         <div className="space-y-4">
+          <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+            <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+              {mcqs.length} shuffled questions with randomized options
+            </p>
+            <button
+              onClick={() => setSeed((s) => s + 1)}
+              className="btn-outline text-xs px-3 py-1.5 flex items-center gap-1.5"
+            >
+              <Shuffle size={14} /> Reshuffle MCQs
+            </button>
+          </div>
           {mcqs.map((m, i) => (
-            <MCQCard key={m.id} mcq={m} index={i} />
+            <MCQCard key={`${m.id}-${seed}`} mcq={m} index={i} />
           ))}
         </div>
       )}
@@ -215,15 +230,17 @@ export function SubjectPage({ subjectId }: Props) {
                 </ul>
 
                 {/* Short Notes Complexity Summary */}
-                <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-3 text-xs">
-                  <span className="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1">
-                    <Clock size={13} /> Time: <code className="font-mono bg-sky-100 dark:bg-sky-950 px-1.5 py-0.5 rounded text-sky-800 dark:text-sky-200">{comp.worstCase}</code>
-                  </span>
-                  <span className="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1">
-                    💾 Space: <code className="font-mono bg-sky-100 dark:bg-sky-950 px-1.5 py-0.5 rounded text-sky-800 dark:text-sky-200">{comp.spaceComplexity}</code>
-                  </span>
-                  <span className="text-slate-500 italic">({comp.explanation})</span>
-                </div>
+                {comp && (
+                  <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-3 text-xs">
+                    <span className="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1">
+                      <Clock size={13} /> Time: <code className="font-mono bg-sky-100 dark:bg-sky-950 px-1.5 py-0.5 rounded text-sky-800 dark:text-sky-200">{comp.worstCase}</code>
+                    </span>
+                    <span className="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1">
+                      💾 Space: <code className="font-mono bg-sky-100 dark:bg-sky-950 px-1.5 py-0.5 rounded text-sky-800 dark:text-sky-200">{comp.spaceComplexity}</code>
+                    </span>
+                    <span className="text-slate-500 italic">({comp.explanation})</span>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -243,17 +260,19 @@ export function SubjectPage({ subjectId }: Props) {
                 </div>
 
                 {/* Interview Complexity Note */}
-                <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-3 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
-                  <div className="flex items-center gap-3 font-semibold text-slate-700 dark:text-slate-200 flex-wrap">
-                    <span className="flex items-center gap-1 text-sky-600 dark:text-sky-400">
-                      <Clock size={13} /> Time Complexity: <code className="font-mono">{comp.worstCase}</code>
-                    </span>
-                    <span className="flex items-center gap-1 text-purple-600 dark:text-purple-400">
-                      💾 Space Complexity: <code className="font-mono">{comp.spaceComplexity}</code>
-                    </span>
+                {comp && (
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-3 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+                    <div className="flex items-center gap-3 font-semibold text-slate-700 dark:text-slate-200 flex-wrap">
+                      <span className="flex items-center gap-1 text-sky-600 dark:text-sky-400">
+                        <Clock size={13} /> Time Complexity: <code className="font-mono">{comp.worstCase}</code>
+                      </span>
+                      <span className="flex items-center gap-1 text-purple-600 dark:text-purple-400">
+                        💾 Space Complexity: <code className="font-mono">{comp.spaceComplexity}</code>
+                      </span>
+                    </div>
+                    <p className="text-slate-500 dark:text-slate-400 mt-1">{comp.explanation}</p>
                   </div>
-                  <p className="text-slate-500 dark:text-slate-400 mt-1">{comp.explanation}</p>
-                </div>
+                )}
               </div>
             ));
           })}

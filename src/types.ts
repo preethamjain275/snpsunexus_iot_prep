@@ -63,8 +63,6 @@ export interface CodingQuestion {
   difficulty: 'easy' | 'medium';
 }
 
-}
-
 export interface RevisionNote {
   id: string;
   mode: '2min' | '5min' | '10min';

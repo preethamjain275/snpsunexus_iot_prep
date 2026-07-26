@@ -78,15 +78,17 @@ export function RevisionPage() {
               </ul>
 
               {/* Complexity Analysis Bar */}
-              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-3 text-xs">
-                <span className="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1">
-                  <Clock size={13} /> Time Complexity: <code className="font-mono bg-sky-100 dark:bg-sky-950 px-1.5 py-0.5 rounded text-sky-800 dark:text-sky-200">{comp.worstCase}</code>
-                </span>
-                <span className="font-bold text-purple-700 dark:text-purple-300 flex items-center gap-1">
-                  💾 Space Complexity: <code className="font-mono bg-purple-100 dark:bg-purple-950 px-1.5 py-0.5 rounded text-purple-800 dark:text-purple-200">{comp.spaceComplexity}</code>
-                </span>
-                <span className="text-slate-500 italic">({comp.explanation})</span>
-              </div>
+              {comp && (
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-3 text-xs">
+                  <span className="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1">
+                    <Clock size={13} /> Time Complexity: <code className="font-mono bg-sky-100 dark:bg-sky-950 px-1.5 py-0.5 rounded text-sky-800 dark:text-sky-200">{comp.worstCase}</code>
+                  </span>
+                  <span className="font-bold text-purple-700 dark:text-purple-300 flex items-center gap-1">
+                    💾 Space Complexity: <code className="font-mono bg-purple-100 dark:bg-purple-950 px-1.5 py-0.5 rounded text-purple-800 dark:text-purple-200">{comp.spaceComplexity}</code>
+                  </span>
+                  <span className="text-slate-500 italic">({comp.explanation})</span>
+                </div>
+              )}
             </div>
           );
         })}
