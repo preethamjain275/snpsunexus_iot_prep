@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StickyNote, Download, Clock } from 'lucide-react';
 import { revisionNotes } from '@/data/revision';
 import { getTopicComplexity } from '@/utils/complexity';
+import { generateRevisionPDF } from '@/utils/pdfGenerator';
 
 export function RevisionPage() {
   const [mode, setMode] = useState<'2min' | '5min' | '10min'>('2min');
@@ -9,16 +10,7 @@ export function RevisionPage() {
   const notes = revisionNotes.filter((n) => n.mode === mode);
 
   const downloadPDF = () => {
-    const content = revisionNotes
-      .map((n) => `=== ${n.title} (${n.mode}) ===\n\n${n.points.map((p) => `• ${p}`).join('\n')}`)
-      .join('\n\n\n');
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'iot-crash-prep-revision-notes.txt';
-    a.click();
-    URL.revokeObjectURL(url);
+    generateRevisionPDF(mode, notes);
   };
 
   const modes = [

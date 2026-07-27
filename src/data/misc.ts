@@ -14,16 +14,28 @@ export const faqs: FaqItem[] = [
 ];
 
 export const externalResources: ExternalResource[] = [
-  { name: 'LeetCode - Easy Problems', url: 'https://leetcode.com/problemset/all/?difficulty=EASY', category: 'Coding Practice' },
-  { name: 'HackerRank - 10 Days of Python', url: 'https://www.hackerrank.com/domains/tutorials/10-days-of-python', category: 'Coding Practice' },
-  { name: 'GeeksforGeeks - Explore', url: 'https://www.geeksforgeeks.org/explore', category: 'Coding Practice' },
-  { name: 'W3Schools - Java', url: 'https://www.w3schools.com/java/', category: 'Java' },
-  { name: 'GeeksforGeeks - Java', url: 'https://www.geeksforgeeks.org/java/', category: 'Java' },
-  { name: 'W3Schools - Python', url: 'https://www.w3schools.com/python/', category: 'Python' },
-  { name: 'GeeksforGeeks - Python', url: 'https://www.geeksforgeeks.org/python-programming-language-tutorial/', category: 'Python' },
-  { name: 'GeeksforGeeks - DBMS', url: 'https://www.geeksforgeeks.org/dbms/', category: 'DBMS' },
-  { name: 'GeeksforGeeks - Operating Systems', url: 'https://www.geeksforgeeks.org/operating-systems/', category: 'Operating Systems' },
-  { name: 'GeeksforGeeks - Data Structures', url: 'https://www.geeksforgeeks.org/data-structures/', category: 'Data Structures' },
-  { name: 'GeeksforGeeks - Computer Networks', url: 'https://www.geeksforgeeks.org/computer-network-tutorials/', category: 'Computer Networks' },
-  { name: 'W3Schools - SQL', url: 'https://www.w3schools.com/sql/', category: 'SQL' },
+  { name: 'LeetCode Easy Problems', url: 'https://leetcode.com/problemset/all/', category: 'Coding Practice' },
+  { name: 'HackerRank 10 Days of Python', url: 'https://www.hackerrank.com/domains/tutorials/10-days-of-python', category: 'Coding Practice' },
+  { name: 'GeeksforGeeks — Explore', url: 'https://www.geeksforgeeks.org/explore', category: 'Coding Practice' },
+
+  { name: 'PrepInsta Technical MCQs', url: 'https://prepinsta.com/technical-interview-questions/', category: 'MCQs & Technical Practice' },
+  { name: 'GeeksforGeeks MCQs Portal', url: 'https://www.geeksforgeeks.org/multiple-choice-questions-mcqs/', category: 'MCQs & Technical Practice' },
+  { name: 'JavaTpoint MCQs & Tutorials', url: 'https://www.javatpoint.com/', category: 'MCQs & Technical Practice' },
+
+  { name: 'W3Schools Java', url: 'https://www.w3schools.com/java/', category: 'Java' },
+  { name: 'GeeksforGeeks Java', url: 'https://www.geeksforgeeks.org/java/', category: 'Java' },
+
+  { name: 'W3Schools Python', url: 'https://www.w3schools.com/python/', category: 'Python' },
+  { name: 'GeeksforGeeks Python', url: 'https://www.geeksforgeeks.org/python-programming-language-tutorial/', category: 'Python' },
+
+  { name: 'GeeksforGeeks DBMS', url: 'https://www.geeksforgeeks.org/dbms/', category: 'DBMS' },
+  { name: 'W3Schools SQL', url: 'https://www.w3schools.com/sql/', category: 'DBMS' },
+
+  { name: 'GeeksforGeeks OS', url: 'https://www.geeksforgeeks.org/operating-systems/', category: 'Operating Systems' },
+
+  { name: 'GeeksforGeeks DSA', url: 'https://www.geeksforgeeks.org/data-structures/', category: 'Data Structures' },
+
+  { name: 'GeeksforGeeks CN', url: 'https://www.geeksforgeeks.org/computer-network-tutorials/', category: 'Computer Networks' },
+
+  { name: 'GeeksforGeeks CS Subjects', url: 'https://www.geeksforgeeks.org/computer-science-subjects-tutorials/', category: 'CS Core Subjects' },
 ];

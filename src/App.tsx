@@ -1,18 +1,20 @@
+import { lazy, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { useRouter } from '@/hooks/useRouter';
 import { Layout } from '@/components/Layout';
-import { HomePage } from '@/pages/HomePage';
-import { SubjectsPage } from '@/pages/SubjectsPage';
-import { SubjectPage } from '@/pages/SubjectPage';
-import { CodingPage } from '@/pages/CodingPage';
-import { MockTestPage } from '@/pages/MockTestPage';
-import { RandomMCQPage } from '@/pages/RandomMCQPage';
-import { RevisionPage } from '@/pages/RevisionPage';
-import { InterviewPage } from '@/pages/InterviewPage';
-import { ResourcesPage } from '@/pages/ResourcesPage';
-import { FAQPage } from '@/pages/FAQPage';
-import { LastMinutePage } from '@/pages/LastMinutePage';
-import { BookmarksPage } from '@/pages/BookmarksPage';
+
+const HomePage = lazy(() => import('@/pages/HomePage').then(m => ({ default: m.HomePage })));
+const SubjectsPage = lazy(() => import('@/pages/SubjectsPage').then(m => ({ default: m.SubjectsPage })));
+const SubjectPage = lazy(() => import('@/pages/SubjectPage').then(m => ({ default: m.SubjectPage })));
+const CodingPage = lazy(() => import('@/pages/CodingPage').then(m => ({ default: m.CodingPage })));
+const MockTestPage = lazy(() => import('@/pages/MockTestPage').then(m => ({ default: m.MockTestPage })));
+const RandomMCQPage = lazy(() => import('@/pages/RandomMCQPage').then(m => ({ default: m.RandomMCQPage })));
+const RevisionPage = lazy(() => import('@/pages/RevisionPage').then(m => ({ default: m.RevisionPage })));
+const InterviewPage = lazy(() => import('@/pages/InterviewPage').then(m => ({ default: m.InterviewPage })));
+const ResourcesPage = lazy(() => import('@/pages/ResourcesPage').then(m => ({ default: m.ResourcesPage })));
+const FAQPage = lazy(() => import('@/pages/FAQPage').then(m => ({ default: m.FAQPage })));
+const LastMinutePage = lazy(() => import('@/pages/LastMinutePage').then(m => ({ default: m.LastMinutePage })));
+const BookmarksPage = lazy(() => import('@/pages/BookmarksPage').then(m => ({ default: m.BookmarksPage })));
 
 function App() {
   const { route } = useRouter();
@@ -35,7 +37,18 @@ function App() {
 
   return (
     <>
-      <Layout>{page}</Layout>
+      <Layout>
+        <Suspense
+          fallback={
+            <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
+              <div className="h-10 w-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-sm font-semibold text-slate-500 animate-pulse">Loading Page...</p>
+            </div>
+          }
+        >
+          {page}
+        </Suspense>
+      </Layout>
       <Analytics />
     </>
   );
