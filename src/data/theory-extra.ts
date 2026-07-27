@@ -55,7 +55,7 @@ export const complexityTopics: TopicContent[] = [
     timeComplexity: 'O(1)',
     bestCase: 'O(1)',
     avgCase: 'O(1)',
-    worstCase: 'O(n)',
+    worstCase: 'O(1)',
     spaceComplexity: 'O(1) – O(n)',
     complexityExplanation: 'Space Complexity measures memory growth across call stacks and dynamic buffer allocations.',
   },

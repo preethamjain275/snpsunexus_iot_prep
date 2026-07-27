@@ -125,8 +125,8 @@ export function getTopicComplexity(
     };
   }
 
-  // Data Structures Operations
-  if (name.includes('array traversal') || name.includes('array lookup')) {
+  // Data Structures Operations & Language Fundamentals
+  if (name.includes('array')) {
     return {
       bestCase: 'O(1) access',
       avgCase: 'O(1) access / O(n) search',
@@ -135,7 +135,34 @@ export function getTopicComplexity(
       explanation: 'Contiguous memory block allowing O(1) indexed lookup.',
     };
   }
-  if (name.includes('linked list traversal') || name.includes('linked list search')) {
+  if (name.includes('string')) {
+    return {
+      bestCase: 'O(1) access',
+      avgCase: 'O(n) traversal/concat',
+      worstCase: 'O(n) search & copy',
+      spaceComplexity: 'O(n) character storage',
+      explanation: 'Immutable character sequence requiring O(n) space for string storage.',
+    };
+  }
+  if (name.includes('loop')) {
+    return {
+      bestCase: 'O(1) (break condition)',
+      avgCase: 'O(n) iterations',
+      worstCase: 'O(n) iterations',
+      spaceComplexity: 'O(1) loop counter',
+      explanation: 'Repeatedly executes code block based on loop conditions.',
+    };
+  }
+  if (name.includes('collection') || name.includes('arraylist') || name.includes('list')) {
+    return {
+      bestCase: 'O(1) access/add',
+      avgCase: 'O(1) access / O(n) search',
+      worstCase: 'O(n) search & resize',
+      spaceComplexity: 'O(n) dynamic allocation',
+      explanation: 'Dynamic resizable collection storing object references.',
+    };
+  }
+  if (name.includes('linked list')) {
     return {
       bestCase: 'O(1) insert at head',
       avgCase: 'O(n) search/access',
@@ -144,34 +171,34 @@ export function getTopicComplexity(
       explanation: 'Nodes linked via pointers. Dynamic sizing with no contiguous memory requirement.',
     };
   }
-  if (name.includes('stack operation') || name.includes('push/pop')) {
+  if (name.includes('stack')) {
     return {
       bestCase: 'O(1) push/pop/peek',
       avgCase: 'O(1) push/pop/peek',
       worstCase: 'O(1) push/pop/peek',
-      spaceComplexity: 'O(n)',
+      spaceComplexity: 'O(n) element storage',
       explanation: 'LIFO structure providing O(1) top operations.',
     };
   }
-  if (name.includes('queue operation') || name.includes('enqueue/dequeue')) {
+  if (name.includes('queue')) {
     return {
       bestCase: 'O(1) enqueue/dequeue',
       avgCase: 'O(1) enqueue/dequeue',
       worstCase: 'O(1) enqueue/dequeue',
-      spaceComplexity: 'O(n)',
+      spaceComplexity: 'O(n) element storage',
       explanation: 'FIFO structure providing O(1) front/rear operations.',
     };
   }
-  if (name.includes('hash table') || name.includes('hash map')) {
+  if (name.includes('hash table') || name.includes('hash map') || name.includes('hash')) {
     return {
       bestCase: 'O(1) lookup/insert',
       avgCase: 'O(1) lookup/insert',
       worstCase: 'O(n) (hash collisions)',
-      spaceComplexity: 'O(n)',
+      spaceComplexity: 'O(n) bucket allocation',
       explanation: 'Uses hash functions to achieve average constant time operations.',
     };
   }
-  if (name.includes('binary tree') || name.includes('bst traversal') || name.includes('tree traversal')) {
+  if (name.includes('binary tree') || name.includes('tree')) {
     return {
       bestCase: 'O(1) root access',
       avgCase: 'O(log n) search/insert',
@@ -180,7 +207,7 @@ export function getTopicComplexity(
       explanation: 'Hierarchical node structure with operations bounded by tree height h.',
     };
   }
-  if (name.includes('graph traversal') || name.includes('bfs') || name.includes('dfs')) {
+  if (name.includes('graph') || name.includes('bfs') || name.includes('dfs')) {
     return {
       bestCase: 'O(1)',
       avgCase: 'O(V + E)',
@@ -191,14 +218,13 @@ export function getTopicComplexity(
   }
   if (name.includes('dynamic programming') || name.includes('memoization')) {
     return {
-      bestCase: 'O(n) or O(n*w)',
+      bestCase: 'O(n)',
       avgCase: 'O(subproblems * transition)',
       worstCase: 'O(states)',
       spaceComplexity: 'O(states) DP table',
       explanation: 'Breaks problem into overlapping subproblems and caches intermediate results.',
     };
   }
-
   if (name.includes('b+ tree index') || name.includes('database index')) {
     return {
       bestCase: 'O(1)',
@@ -206,6 +232,30 @@ export function getTopicComplexity(
       worstCase: 'O(log n)',
       spaceComplexity: 'O(n) index tree size',
       explanation: 'B+ Tree index speeds up row selection from O(n) table scan to O(log n).',
+    };
+  }
+  if (
+    name.includes('variable') ||
+    name.includes('data type') ||
+    name.includes('operator') ||
+    name.includes('class') ||
+    name.includes('object') ||
+    name.includes('constructor') ||
+    name.includes('inheritance') ||
+    name.includes('polymorphism') ||
+    name.includes('encapsulation') ||
+    name.includes('abstraction') ||
+    name.includes('interface') ||
+    name.includes('package') ||
+    name.includes('access modifier') ||
+    name.includes('exception handling')
+  ) {
+    return {
+      bestCase: 'O(1)',
+      avgCase: 'O(1)',
+      worstCase: 'O(1)',
+      spaceComplexity: 'O(1) memory allocation',
+      explanation: 'Core language construct operating with constant time and memory overhead.',
     };
   }
 
