@@ -18,6 +18,15 @@ export function getTopicComplexity(
   },
   subjectId?: string
 ): ComplexityInfo | null {
+  if (
+    subjectId === 'cn' ||
+    subjectId === 'os' ||
+    subjectId === 'Computer Networks' ||
+    subjectId === 'Operating Systems'
+  ) {
+    return null;
+  }
+
   if (topic.bestCase && topic.worstCase && topic.spaceComplexity) {
     return {
       bestCase: topic.bestCase,

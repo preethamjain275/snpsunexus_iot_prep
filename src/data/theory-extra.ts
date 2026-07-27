@@ -448,7 +448,6 @@ export const extraTheory: Record<string, TopicContent[]> = {
     },
   ],
   os: [
-    ...complexityTopics,
     {
       name: 'System Calls & Dual Mode',
       definition: 'System calls are the interface from user programs to kernel services; dual mode protects the OS.',
@@ -696,7 +695,6 @@ export const extraTheory: Record<string, TopicContent[]> = {
     },
   ],
   cn: [
-    ...complexityTopics,
     {
       name: 'Encapsulation & PDUs',
       definition: 'Encapsulation wraps data with headers at each layer; the resulting unit is a PDU (Protocol Data Unit).',
