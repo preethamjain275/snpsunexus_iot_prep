@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Code2, ChevronDown, ChevronUp, Clock, Lightbulb, Play } from 'lucide-react';
+import { Code2, ChevronDown, ChevronUp, Play } from 'lucide-react';
 import { allCodingQuestions } from '@/data/coding-index';
 
 export function CodingPage() {
   const [open, setOpen] = useState<number | null>(0);
-  const [lang, setLang] = useState<'java' | 'python'>('java');
+  const [lang, setLang] = useState<'java' | 'python' | 'cpp'>('java');
   const questions = allCodingQuestions;
 
   return (
@@ -16,7 +16,7 @@ export function CodingPage() {
           </div>
           Coding Practice
         </h1>
-        <p className="text-slate-500 mt-1">{questions.length} questions with approach, dry run, Java & Python solutions, and time complexity.</p>
+        <p className="text-slate-500 mt-1">{questions.length} questions with approach, dry run, Java, Python & C++ solutions, and time complexity.</p>
       </div>
 
       <div className="space-y-3">
@@ -64,7 +64,7 @@ export function CodingPage() {
                 {/* Language toggle */}
                 <div>
                   <div className="flex gap-1 mb-2">
-                    {(['java', 'python'] as const).map((l) => (
+                    {(['java', 'python', 'cpp'] as const).map((l) => (
                       <button
                         key={l}
                         onClick={() => setLang(l)}
@@ -72,12 +72,12 @@ export function CodingPage() {
                           lang === l ? 'bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
                         }`}
                       >
-                        {l === 'java' ? 'Java' : 'Python'}
+                        {l === 'java' ? 'Java' : l === 'python' ? 'Python' : 'C++'}
                       </button>
                     ))}
                   </div>
                   <pre className="text-xs bg-slate-900 dark:bg-slate-950 text-slate-100 rounded-xl p-4 overflow-x-auto font-mono leading-relaxed">
-                    {lang === 'java' ? q.java : q.python}
+                    {lang === 'java' ? q.java : lang === 'python' ? q.python : q.cpp}
                   </pre>
                 </div>
 

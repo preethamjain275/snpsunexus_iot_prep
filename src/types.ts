@@ -54,6 +54,7 @@ export interface CodingQuestion {
   dryRun: string;
   java: string;
   python: string;
+  cpp: string;
   timeComplexity: string;
   bestCase?: string;
   avgCase?: string;
