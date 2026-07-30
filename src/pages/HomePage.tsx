@@ -10,12 +10,12 @@ export function HomePage() {
   const totalCoding = allCodingQuestions.length;
 
   const companies = [
-    { name: 'Tap Academy', url: 'https://tapacademy.com/' },
+    { name: 'Tap Academy', url: '#' },
     { name: 'HCL GUVI', url: 'https://www.guvi.in/' },
     { name: 'PrepInsta', url: 'https://prepinsta.com/' },
-    { name: 'Atom', url: 'https://atom.work/' },
-    { name: 'HCL Tech', url: 'https://www.hcltech.com/' },
-    { name: 'Tripillar', url: 'https://www.tripillar.org/' },
+    { name: 'Atom', url: '#' },
+    { name: 'HCL Tech', url: '#' },
+    { name: 'Tripillar', url: '#' },
   ];
 
   const quickLinks = [
