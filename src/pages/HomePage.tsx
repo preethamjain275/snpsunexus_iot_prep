@@ -9,7 +9,14 @@ export function HomePage() {
   const totalMCQs = allMCQs.length;
   const totalCoding = allCodingQuestions.length;
 
-  const companies = ['Tap Academy', 'HCL GUVI', 'PrepInsta', 'Atom', 'HCL Tech', 'Tripillar'];
+  const companies = [
+    { name: 'Tap Academy', url: 'https://tapacademy.com/' },
+    { name: 'HCL GUVI', url: 'https://www.guvi.in/' },
+    { name: 'PrepInsta', url: 'https://prepinsta.com/' },
+    { name: 'Atom', url: 'https://atom.work/' },
+    { name: 'HCL Tech', url: 'https://www.hcltech.com/' },
+    { name: 'Tripillar', url: 'https://www.tripillar.org/' },
+  ];
 
   const quickLinks = [
     { label: 'Subjects', desc: 'Theory + MCQs', path: '/subjects', icon: BookOpen, color: 'from-sky-500 to-blue-600' },
@@ -99,9 +106,15 @@ export function HomePage() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {companies.map((c) => (
-            <div key={c} className="card-3d p-4 text-center group cursor-pointer hover:border-sky-300 dark:hover:border-sky-700">
-              <p className="font-semibold text-sm group-hover:scale-105 transition-transform">{c}</p>
-            </div>
+            <a
+              key={c.name}
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-3d p-4 text-center group cursor-pointer hover:border-sky-300 dark:hover:border-sky-700 block transition-all"
+            >
+              <p className="font-semibold text-sm group-hover:scale-105 transition-transform">{c.name}</p>
+            </a>
           ))}
         </div>
       </section>

@@ -1,4 +1,4 @@
-const CACHE = 'iot-prep-v2';
+const CACHE = 'iot-prep-v3';
 const APP_SHELL = [
   '/',
   '/index.html',
